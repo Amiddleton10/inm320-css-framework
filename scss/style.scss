@@ -88,7 +88,7 @@ a {
         margin: 0 1rem;
         padding: 1.5rem 0.5rem;
         border-bottom: 1px solid transparent;
-        // faded divider line under the logo, like the figma design
+        // faded divider line under the logo
         border-image: linear-gradient(90deg, rgba(224, 225, 226, 0), #e0e1e2, rgba(224, 225, 226, 0)) 1;
     }
 
@@ -258,7 +258,7 @@ a {
     color: $purple;
 }
 
-// timeline icon colours from the figma design
+// timeline icon colours
 .text-html { color: #e53e3e; }
 .text-blue { color: #4299e1; }
 .text-orange { color: #ed8936; }
@@ -336,8 +336,7 @@ a {
     }
 }
 
-// bootstrap only has w-25, w-50, w-75 and w-100, so this loop makes
-// w-0, w-10, w-20 ... w-100 for the progress bars (no inline style attributes needed)
+// makes width classes w-0, w-10, w-20 ... w-100 for the progress bars
 @for $i from 0 through 10 {
     .w-#{$i * 10} {
         width: $i * 10%;
@@ -345,9 +344,7 @@ a {
 }
 
 // ---------- row 3: projects table ----------
-// phones: each row stacks into its own block, so nothing scrolls sideways.
-// the column headings are hidden visually (screen readers still read them)
-// and each cell shows its own label from the data-label attribute instead.
+// phones: each row stacks, with labels from data-label
 .projects-table {
     font-size: 0.85rem;
 

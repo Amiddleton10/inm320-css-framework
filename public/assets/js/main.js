@@ -10,7 +10,7 @@
 // ---------- shared chart settings ----------
 const teal = '#4fd1c5';
 const navy = '#2d3748';
-const axisGrey = '#a0aec0';   // light grey axis labels, like the figma design
+const axisGrey = '#a0aec0';   // light grey axis labels
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 
@@ -141,7 +141,7 @@ projectForm.addEventListener('submit', function (event) {
 
     const companyCell = document.createElement('td');
     companyCell.innerHTML = '<span class="company-logo"><i class="bi bi-star-fill" aria-hidden="true"></i></span> ';
-    companyCell.append(name);   // append() adds the name as plain text, so it can't inject html
+    companyCell.append(name);
 
     // data-label attributes give each cell its label in the stacked phone layout
     const membersCell = document.createElement('td');
