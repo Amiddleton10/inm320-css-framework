@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Purity UI Dashboard built with the Bootstrap 5 CSS framework for INM320.">
+
+    <title>INM320 CSS Framework: Purity UI Dashboard</title>
+
+    <!-- bootstrap 5 css framework (from the bootstrap cdn) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- bootstrap icons, used for the sidebar, stat cards and timeline -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- my styles, compiled from scss/style.scss, loaded last so they override bootstrap -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- ========== SIDEBAR ========== -->
+            <!-- on phones and tablets it is an offcanvas menu that slides in from the left (opened by the hamburger button) -->
+            <!-- on large screens (992px and up) it sits on the left as a normal sidebar: -->
+            <!-- 3 of the 12 columns on laptops, 2 of the 12 columns on extra wide screens (1400px and up) -->
+            <aside class="col-lg-3 col-xxl-2 p-0 sidebar-column">
+                <div class="offcanvas-lg offcanvas-start sidebar" tabindex="-1" id="sidebar" aria-labelledby="sidebar-title">
+
+                    <!-- sidebar logo -->
+                    <div class="offcanvas-header sidebar-header">
+                        <h2 class="sidebar-brand" id="sidebar-title">
+                            <i class="bi bi-grid-1x2" aria-hidden="true"></i>
+                            Purity UI Dashboard
+                        </h2>
+                        <button type="button" class="btn-close d-lg-none" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Close menu"></button>
+                    </div>
+
+                    <!-- sidebar navigation links -->
+                    <div class="offcanvas-body">
+                        <nav class="sidebar-nav w-100" aria-label="Main navigation">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#" aria-current="page">
+                                        <span class="nav-icon"><i class="bi bi-house-door-fill" aria-hidden="true"></i></span>
+                                        Dashboard
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-icon"><i class="bi bi-bar-chart-fill" aria-hidden="true"></i></span>
+                                        Tables
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-icon"><i class="bi bi-credit-card-fill" aria-hidden="true"></i></span>
+                                        Billing
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-icon"><i class="bi bi-wrench-adjustable" aria-hidden="true"></i></span>
+                                        RTL
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- account pages section of the sidebar -->
+                            <h3 class="sidebar-heading">Account Pages</h3>
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-icon"><i class="bi bi-person-fill" aria-hidden="true"></i></span>
+                                        Profile
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-icon"><i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i></span>
+                                        Sign In
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-icon"><i class="bi bi-rocket-takeoff-fill" aria-hidden="true"></i></span>
+                                        Sign Up
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </aside>
+            <!-- ========== END SIDEBAR ========== -->
+
+            <!-- ========== MAIN CONTENT ========== -->
+            <!-- full width on phones, 9 of the 12 columns on laptops, 10 of the 12 on extra wide screens -->
+            <main class="col-lg-9 col-xxl-10 main-content">
+
+                <!-- ===== HEADER: breadcrumb, page title, search and icons ===== -->
+                <header class="dashboard-header">
+                    <div class="row g-3 align-items-center">
+
+                        <!-- breadcrumb and page title -->
+                        <div class="col-12 col-md-6 d-flex align-items-center">
+                            <!-- hamburger button, only shows on phones and tablets, opens the sidebar -->
+                            <button class="btn btn-menu d-lg-none me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Open menu">
+                                <i class="bi bi-list" aria-hidden="true"></i>
+                            </button>
+                            <div>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb mb-1">
+                                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                    </ol>
+                                </nav>
+                                <h1 class="page-title">Dashboard</h1>
+                            </div>
+                        </div>
+
+                        <!-- search box, sign in link and icons -->
+                        <div class="col-12 col-md-6 d-flex align-items-center justify-content-md-end gap-3">
+                            <form class="search-form" role="search">
+                                <label for="search" class="visually-hidden">Search</label>
+                                <!-- search icon sits inside the rounded input (positioned in the scss) -->
+                                <div class="search-pill">
+                                    <i class="bi bi-search" aria-hidden="true"></i>
+                                    <input class="form-control" type="search" id="search" placeholder="Type here...">
+                                </div>
+                                <button type="submit" class="visually-hidden">Search</button>
+                            </form>
+                            <a href="#" class="header-link text-nowrap"><i class="bi bi-person-fill" aria-hidden="true"></i> Sign In</a>
+                            <a href="#" class="header-link" aria-label="Settings"><i class="bi bi-gear-fill" aria-hidden="true"></i></a>
+                            <a href="#" class="header-link" aria-label="Notifications"><i class="bi bi-bell-fill" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </header>
+                <!-- ===== END HEADER ===== -->
+
+                <!-- ===== ROW 1: STATS (today's money, today's users, new clients, total sales) ===== -->
+                <!-- 1 per row on phones, 2 per row on tablets, 4 per row (3 columns each) on extra large screens -->
+                <section class="row g-4 mb-4" aria-label="Today's statistics">
+
+                    <!-- stat: today's money -->
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <article class="card stat-card">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h2 class="stat-label">Today's Money</h2>
+                                    <p class="stat-value">$53,000 <span class="text-up">+55%</span></p>
+                                </div>
+                                <span class="icon-box"><i class="bi bi-wallet-fill" aria-hidden="true"></i></span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- stat: today's users -->
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <article class="card stat-card">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h2 class="stat-label">Today's Users</h2>
+                                    <p class="stat-value">2,300 <span class="text-up">+5%</span></p>
+                                </div>
+                                <span class="icon-box"><i class="bi bi-globe" aria-hidden="true"></i></span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- stat: new clients -->
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <article class="card stat-card">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h2 class="stat-label">New Clients</h2>
+                                    <p class="stat-value">+3,052 <span class="text-down">-14%</span></p>
+                                </div>
+                                <span class="icon-box"><i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i></span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- stat: total sales -->
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <article class="card stat-card">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h2 class="stat-label">Total Sales</h2>
+                                    <p class="stat-value">$173,000 <span class="text-up">+8%</span></p>
+                                </div>
+                                <span class="icon-box"><i class="bi bi-cart-fill" aria-hidden="true"></i></span>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+                <!-- ===== END ROW 1 ===== -->
+
+                <!-- ===== ROW 2: CHARTS ===== -->
+                <!-- changed from the figma design: sales overview is on the left, active users is on the right, 50% each (6 of 12 columns) -->
+                <section class="row g-4 mb-4" aria-label="Charts">
+
+                    <!-- sales overview: line chart drawn by chart.js -->
+                    <div class="col-12 col-xl-6">
+                        <article class="card h-100">
+                            <div class="card-body">
+                                <h2 class="card-title-lg">Sales overview</h2>
+                                <p class="card-subtitle-sm"><span class="text-up">(+5) more</span> in 2021</p>
+                                <div class="chart-wrap">
+                                    <canvas id="sales-chart" aria-label="Line chart of monthly sales from January to December" role="img"></canvas>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- active users: dark bar chart drawn by chart.js, plus 4 small stats with progress bars -->
+                    <div class="col-12 col-xl-6">
+                        <article class="card h-100">
+                            <div class="card-body">
+                                <div class="chart-dark">
+                                    <canvas id="users-chart" aria-label="Bar chart of active users" role="img"></canvas>
+                                </div>
+                                <h2 class="card-title-lg">Active Users</h2>
+                                <p class="card-subtitle-sm"><span class="text-up">(+23)</span> than last week</p>
+
+                                <!-- 4 small user stats, 2 per row on phones, 4 in a row from tablets up -->
+                                <div class="row g-3">
+                                    <div class="col-6 col-md-3">
+                                        <p class="mini-label"><span class="icon-box icon-box-sm"><i class="bi bi-wallet-fill" aria-hidden="true"></i></span> Users</p>
+                                        <p class="mini-value">32,984</p>
+                                        <div class="progress progress-thin" role="progressbar" aria-label="Users" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar w-60"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <p class="mini-label"><span class="icon-box icon-box-sm"><i class="bi bi-rocket-takeoff-fill" aria-hidden="true"></i></span> Clicks</p>
+                                        <p class="mini-value">2,42m</p>
+                                        <div class="progress progress-thin" role="progressbar" aria-label="Clicks" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar w-90"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <p class="mini-label"><span class="icon-box icon-box-sm"><i class="bi bi-cart-fill" aria-hidden="true"></i></span> Sales</p>
+                                        <p class="mini-value">2,400$</p>
+                                        <div class="progress progress-thin" role="progressbar" aria-label="Sales" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar w-30"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <p class="mini-label"><span class="icon-box icon-box-sm"><i class="bi bi-tools" aria-hidden="true"></i></span> Items</p>
+                                        <p class="mini-value">320</p>
+                                        <div class="progress progress-thin" role="progressbar" aria-label="Items" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar w-50"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+                <!-- ===== END ROW 2 ===== -->
+
+                <!-- ===== ROW 3: PROJECTS TABLE AND ORDERS OVERVIEW ===== -->
+                <!-- stacked on phones, 8 + 4 columns on extra large screens -->
+                <section class="row g-4 mb-4" aria-label="Projects and orders">
+
+                    <!-- projects table -->
+                    <div class="col-12 col-xl-8">
+                        <article class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+                                    <div>
+                                        <h2 class="card-title-lg">Projects</h2>
+                                        <p class="card-subtitle-sm mb-0"><i class="bi bi-check-circle-fill text-teal" aria-hidden="true"></i> <strong id="projects-done">30 done</strong> this month</p>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <!-- this button opens the "add a project" modal window (bootstrap modal component) -->
+                                        <button type="button" class="btn btn-teal" data-bs-toggle="modal" data-bs-target="#project-modal">
+                                            <i class="bi bi-plus-lg" aria-hidden="true"></i> Click here to add a project
+                                        </button>
+
+                                        <!-- three dot menu from the figma design (bootstrap dropdown component) -->
+                                        <div class="dropdown">
+                                            <button class="btn btn-dots" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More project options">
+                                                <i class="bi bi-three-dots-vertical" aria-hidden="true"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#project-modal">Add a project</button></li>
+                                                <li><a class="dropdown-item" href="#">View all projects</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- phones: each project row stacks into its own block (no sideways scrolling). tablets and up: a normal table -->
+                                <table class="table align-middle projects-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Companies</th>
+                                            <th scope="col">Members</th>
+                                            <th scope="col">Budget</th>
+                                            <th scope="col">Completion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="projects-body">
+                                        <tr>
+                                            <td><span class="company-logo logo-xd">Xd</span> Chakra Soft UI Version</td>
+                                            <td data-label="Members">
+                                                <img class="members" src="/assets/images/members-5.png" alt="5 team members" width="75" height="23">
+                                            </td>
+                                            <td class="fw-bold" data-label="Budget">$14,000</td>
+                                            <td data-label="Completion">
+                                                <div class="completion-cell">
+                                                    <span class="completion">60%</span>
+                                                    <div class="progress progress-thin" role="progressbar" aria-label="Chakra Soft UI Version completion" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar w-60"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="brand-icon icon-atlassian"><i class="bi bi-triangle-fill" aria-hidden="true"></i></span> Add Progress Track</td>
+                                            <td data-label="Members">
+                                                <img class="members" src="/assets/images/members-2.png" alt="2 team members" width="35" height="23">
+                                            </td>
+                                            <td class="fw-bold" data-label="Budget">$3,000</td>
+                                            <td data-label="Completion">
+                                                <div class="completion-cell">
+                                                    <span class="completion">10%</span>
+                                                    <div class="progress progress-thin" role="progressbar" aria-label="Add Progress Track completion" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar w-10"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="brand-icon icon-slack"><i class="bi bi-slack" aria-hidden="true"></i></span> Fix Platform Errors</td>
+                                            <td data-label="Members">
+                                                <img class="members" src="/assets/images/members-2.png" alt="2 team members" width="35" height="23">
+                                            </td>
+                                            <td class="fw-bold" data-label="Budget">Not set</td>
+                                            <td data-label="Completion">
+                                                <div class="completion-cell">
+                                                    <span class="completion">100%</span>
+                                                    <div class="progress progress-thin" role="progressbar" aria-label="Fix Platform Errors completion" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar w-100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="brand-icon icon-spotify"><i class="bi bi-spotify" aria-hidden="true"></i></span> Launch our Mobile App</td>
+                                            <td data-label="Members">
+                                                <img class="members" src="/assets/images/members-4.png" alt="4 team members" width="61" height="23">
+                                            </td>
+                                            <td class="fw-bold" data-label="Budget">$32,000</td>
+                                            <td data-label="Completion">
+                                                <div class="completion-cell">
+                                                    <span class="completion">100%</span>
+                                                    <div class="progress progress-thin" role="progressbar" aria-label="Launch our Mobile App completion" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar w-100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="brand-icon icon-jira"><i class="bi bi-diamond-fill" aria-hidden="true"></i></span> Add the New Pricing Page</td>
+                                            <td data-label="Members">
+                                                <img class="members" src="/assets/images/members-5.png" alt="5 team members" width="75" height="23">
+                                            </td>
+                                            <td class="fw-bold" data-label="Budget">$400</td>
+                                            <td data-label="Completion">
+                                                <div class="completion-cell">
+                                                    <span class="completion">25%</span>
+                                                    <div class="progress progress-thin" role="progressbar" aria-label="Add the New Pricing Page completion" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar w-25"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="company-logo logo-invision">in</span> Redesign New Online Shop</td>
+                                            <td data-label="Members">
+                                                <img class="members" src="/assets/images/members-2.png" alt="2 team members" width="35" height="23">
+                                            </td>
+                                            <td class="fw-bold" data-label="Budget">$7,600</td>
+                                            <td data-label="Completion">
+                                                <div class="completion-cell">
+                                                    <span class="completion">40%</span>
+                                                    <div class="progress progress-thin" role="progressbar" aria-label="Redesign New Online Shop completion" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar w-40"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- orders overview timeline -->
+                    <div class="col-12 col-xl-4">
+                        <article class="card h-100">
+                            <div class="card-body">
+                                <h2 class="card-title-lg">Orders overview</h2>
+                                <p class="card-subtitle-sm"><span class="text-up">+30%</span> this month</p>
+
+                                <ul class="timeline">
+                                    <li>
+                                        <span class="timeline-icon text-teal"><i class="bi bi-bell-fill" aria-hidden="true"></i></span>
+                                        <p class="timeline-title">$2400, Design changes</p>
+                                        <p class="timeline-date">22 DEC 7:20 PM</p>
+                                    </li>
+                                    <li>
+                                        <span class="timeline-icon text-html">
+                                            <!-- html5 logo (bootstrap icons doesn't have one, so this is an inline svg) -->
+                                            <svg class="html5-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>
+                                        </span>
+                                        <p class="timeline-title">New order #4219423</p>
+                                        <p class="timeline-date">21 DEC 11:21 PM</p>
+                                    </li>
+                                    <li>
+                                        <span class="timeline-icon text-blue"><i class="bi bi-cart-fill" aria-hidden="true"></i></span>
+                                        <p class="timeline-title">Server Payments for April</p>
+                                        <p class="timeline-date">21 DEC 9:28 PM</p>
+                                    </li>
+                                    <li>
+                                        <span class="timeline-icon text-orange"><i class="bi bi-credit-card-fill" aria-hidden="true"></i></span>
+                                        <p class="timeline-title">New card added for order #3210145</p>
+                                        <p class="timeline-date">20 DEC 3:52 PM</p>
+                                    </li>
+                                    <li>
+                                        <span class="timeline-icon text-purple"><i class="bi bi-dropbox" aria-hidden="true"></i></span>
+                                        <p class="timeline-title">Unlock packages for Development</p>
+                                        <p class="timeline-date">19 DEC 11:35 PM</p>
+                                    </li>
+                                    <li>
+                                        <span class="timeline-icon"><span class="company-logo logo-xd">Xd</span></span>
+                                        <p class="timeline-title">New order #9851258</p>
+                                        <p class="timeline-date">18 DEC 4:41 PM</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+                <!-- ===== END ROW 3 ===== -->
+
+                <!-- ===== FOOTER ===== -->
+                <footer class="dashboard-footer">
+                    <p>&copy; <span id="year">2026</span> Purity UI Dashboard, built with Bootstrap 5 for INM320.</p>
+                </footer>
+            </main>
+            <!-- ========== END MAIN CONTENT ========== -->
+
+        </div>
+    </div>
+
+    <!-- ========== ADD PROJECT MODAL (bootstrap modal + form components) ========== -->
+    <!-- opened by the "click here to add a project" button above the projects table -->
+    <div class="modal fade" id="project-modal" tabindex="-1" aria-labelledby="project-modal-title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="project-form" novalidate>
+
+                    <!-- modal header -->
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="project-modal-title">Add a project</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <!-- modal body: the form fields -->
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="project-name" class="form-label">Project name (required)</label>
+                            <input type="text" class="form-control" id="project-name" required>
+                            <div class="invalid-feedback">Please enter a project name.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="project-budget" class="form-label">Budget (required)</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" id="project-budget" min="0" required>
+                                <div class="invalid-feedback">Please enter a budget.</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="project-completion" class="form-label">Completion: <span id="completion-output">50</span>%</label>
+                            <input type="range" class="form-range" id="project-completion" min="0" max="100" step="10" value="50">
+                        </div>
+                    </div>
+
+                    <!-- modal footer: cancel and save buttons -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-teal">Add project</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- ========== END ADD PROJECT MODAL ========== -->
+
+    <!-- bootstrap javascript (needed for the offcanvas sidebar and the modal) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- chart.js library, draws the two charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+    <!-- my javascript: chart settings and the add project form -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "inm320-css-framework",
+  "version": "1.0.0",
+  "description": "INM320 CSS Framework assignment: Purity UI dashboard built with Bootstrap 5",
+  "scripts": {
+    "sass": "sass --watch scss/style.scss:public/assets/css/style.css",
+    "server": "lite-server --baseDir=\"public\"",
+    "start": "concurrently \"npm run sass\" \"npm run server\""
+  },
+  "author": "Aaron Middleton",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "lite-server": "^2.6.1",
+    "sass": "^1.83.0"
+  }
+}

@@ -1,0 +1,662 @@
+// ==========================================================
+// INM320 CSS Framework: Purity UI Dashboard
+// Custom styles that modify the default Bootstrap 5 design.
+// Written in Sass (SCSS) and compiled to public/assets/css/style.css
+// Mobile first: default styles are for phones, media queries
+// (min-width) add changes for bigger screens.
+// ==========================================================
+
+
+// ---------- VARIABLES (colours and sizes from the figma design) ----------
+$teal: #4fd1c5;
+$teal-dark: #2c7a73;       // darker teal, readable as text on white
+$teal-darker: #22625c;     // button hover
+$text-dark: #2d3748;
+$text-grey: #718096;
+$text-light: #a0aec0;
+$page-bg: #f8f9fa;
+$card-bg: #ffffff;
+$green: #38a169;
+$red: #e53e3e;
+$purple: #9f7aea;
+$dark-start: #313860;      // active users chart gradient
+$dark-end: #151928;
+
+$font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$radius: 15px;
+$shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02);
+
+// bootstrap's breakpoints, written out so my media queries match bootstrap's
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+
+// ---------- MIXINS ----------
+
+// mobile first media query, only ever uses min-width
+@mixin min-width($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+// square coloured box with an icon centred inside (stat cards, sidebar, active users)
+@mixin icon-box($size, $font-size) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: $size;
+    height: $size;
+    border-radius: 12px;
+    background-color: $teal;
+    color: #ffffff;
+    font-size: $font-size;
+}
+
+// white rounded card look used by every content block
+@mixin card-style {
+    border: 0;
+    border-radius: $radius;
+    background-color: $card-bg;
+    box-shadow: $shadow;
+}
+
+
+// ==========================================================
+// MOBILE STYLES (default, phones first)
+// ==========================================================
+
+// ---------- page ----------
+body {
+    font-family: $font-main;
+    background-color: $page-bg;
+    color: $text-dark;
+}
+
+a {
+    color: $teal-dark;
+}
+
+// ---------- sidebar ----------
+// on phones the sidebar is a bootstrap offcanvas menu
+.sidebar {
+    background-color: $page-bg;
+
+    .sidebar-header {
+        margin: 0 1rem;
+        padding: 1.5rem 0.5rem;
+        border-bottom: 1px solid transparent;
+        // faded divider line under the logo, like the figma design
+        border-image: linear-gradient(90deg, rgba(224, 225, 226, 0), #e0e1e2, rgba(224, 225, 226, 0)) 1;
+    }
+
+    .sidebar-brand {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        white-space: nowrap;
+        margin: 0;
+
+        .bi {
+            font-size: 1.2rem;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+    }
+
+    .sidebar-heading {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $text-dark;
+        margin: 1.5rem 0 0.75rem 1rem;
+    }
+
+    // sidebar links
+    .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.25rem;
+        border-radius: $radius;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: $text-grey;
+
+        .nav-icon {
+            @include icon-box(30px, 0.85rem);
+            background-color: #ffffff;
+            color: $teal;
+        }
+
+        &:hover {
+            color: $text-dark;
+        }
+
+        // the active page link gets a white card and a teal icon box
+        &.active {
+            @include card-style;
+            color: $text-dark;
+
+            .nav-icon {
+                background-color: $teal;
+                color: #ffffff;
+            }
+        }
+    }
+}
+
+// ---------- main content area ----------
+.main-content {
+    padding: 1.25rem 1rem;
+}
+
+// ---------- header ----------
+.dashboard-header {
+    margin-bottom: 1.5rem;
+
+    .breadcrumb {
+        font-size: 0.75rem;
+
+        a {
+            color: $text-light;
+            text-decoration: none;
+        }
+    }
+
+    .page-title {
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .search-form {
+        flex-grow: 1;
+    }
+
+    // rounded search box with the icon inside it
+    .search-pill {
+        position: relative;
+
+        .bi {
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+            color: $text-dark;
+        }
+
+        .form-control {
+            padding-left: 2.25rem;
+            border: 1px solid #e2e8f0;
+            border-radius: $radius;
+            background-color: #ffffff;
+            font-size: 0.8rem;
+        }
+    }
+
+    .header-link {
+        color: $text-grey;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-decoration: none;
+
+        &:hover {
+            color: $text-dark;
+        }
+    }
+}
+
+// hamburger button that opens the sidebar on phones and tablets
+.btn-menu {
+    @include icon-box(40px, 1.4rem);
+    border: 0;
+
+    &:hover,
+    &:focus {
+        background-color: $teal-dark;
+        color: #ffffff;
+    }
+}
+
+// ---------- cards (all content blocks) ----------
+.card {
+    @include card-style;
+}
+
+.card-title-lg {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.card-subtitle-sm {
+    font-size: 0.85rem;
+    color: $text-grey;
+}
+
+// green "up" and red "down" percentages
+.text-up {
+    color: $green;
+    font-weight: 700;
+}
+
+.text-down {
+    color: $red;
+    font-weight: 700;
+}
+
+.text-teal {
+    color: $teal-dark;
+}
+
+.text-purple {
+    color: $purple;
+}
+
+// timeline icon colours from the figma design
+.text-html { color: #e53e3e; }
+.text-blue { color: #4299e1; }
+.text-orange { color: #ed8936; }
+
+// ---------- row 1: stat cards ----------
+.stat-card {
+    .stat-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: $text-grey;
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-value {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0;
+
+        span {
+            font-size: 0.85rem;
+        }
+    }
+}
+
+.icon-box {
+    @include icon-box(45px, 1.25rem);
+}
+
+.icon-box-sm {
+    @include icon-box(24px, 0.7rem);
+    border-radius: 6px;
+    margin-right: 0.35rem;
+}
+
+// ---------- row 2: charts ----------
+// chart.js needs a parent with a set height to size the canvas
+.chart-wrap {
+    position: relative;
+    height: 260px;
+}
+
+// dark gradient box behind the active users bar chart
+.chart-dark {
+    position: relative;
+    height: 220px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: $radius;
+    background: linear-gradient(81.62deg, $dark-start 2.25%, $dark-end 79.87%);
+}
+
+// the 4 small active users stats
+.mini-label {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: $text-grey;
+    margin-bottom: 0.5rem;
+}
+
+.mini-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+// thin teal progress bars (active users and projects table)
+.progress-thin {
+    height: 4px;
+    background-color: #e2e8f0;
+
+    .progress-bar {
+        background-color: $teal;
+    }
+}
+
+// bootstrap only has w-25, w-50, w-75 and w-100, so this loop makes
+// w-0, w-10, w-20 ... w-100 for the progress bars (no inline style attributes needed)
+@for $i from 0 through 10 {
+    .w-#{$i * 10} {
+        width: $i * 10%;
+    }
+}
+
+// ---------- row 3: projects table ----------
+// phones: each row stacks into its own block, so nothing scrolls sideways.
+// the column headings are hidden visually (screen readers still read them)
+// and each cell shows its own label from the data-label attribute instead.
+.projects-table {
+    font-size: 0.85rem;
+
+    thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+    }
+
+    th {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $text-light;
+    }
+
+    tr {
+        display: block;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.3rem 0;
+        border: 0;
+
+        // label on the left of each cell, e.g. "BUDGET"
+        &::before {
+            content: attr(data-label);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $text-light;
+        }
+
+        // the company name cell is the row's title, so it has no label
+        &:first-child {
+            justify-content: flex-start;
+            gap: 0;
+            font-weight: 700;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+
+    .completion-cell {
+        width: 125px;
+    }
+
+    .completion {
+        display: block;
+        font-weight: 700;
+        color: $teal-dark;
+        margin-bottom: 0.25rem;
+    }
+}
+
+// small square logos next to each company name
+.company-logo {
+    @include icon-box(22px, 0.7rem);
+    border-radius: 5px;
+    margin-right: 0.5rem;
+    font-weight: 700;
+}
+
+// boxed logos (adobe xd and invision)
+.logo-xd {
+    background-color: #470137;
+    color: #ff61f6;
+}
+
+.logo-invision {
+    background-color: #dc395f;
+    font-style: italic;
+    font-family: Georgia, serif;
+}
+
+// brand icons with no box behind them (atlassian, slack, spotify, jira)
+.brand-icon {
+    display: inline-block;
+    width: 22px;
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.icon-atlassian { color: #2684ff; }
+.icon-slack { color: #e01e5a; }
+.icon-spotify { color: #1db954; }
+.icon-jira { color: #2684ff; }
+
+// member photo groups, cropped from the figma design export
+.members {
+    display: block;
+    height: 23px;
+    width: auto;
+}
+
+// overlapping round member avatars (used for new projects added with the modal)
+.avatars {
+    display: flex;
+
+    .avatar {
+        width: 24px;
+        height: 24px;
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        margin-left: -8px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+.avatar-1 { background-color: #ed8936; }
+.avatar-2 { background-color: #4299e1; }
+.avatar-3 { background-color: #9f7aea; }
+.avatar-4 { background-color: #48bb78; }
+
+// teal button (modal button and modal save button)
+.btn-teal {
+    background-color: $teal-dark;
+    border-color: $teal-dark;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    &:hover,
+    &:focus {
+        background-color: $teal-darker;
+        border-color: $teal-darker;
+        color: #ffffff;
+    }
+}
+
+// grey three dot menu button next to the add project button
+.btn-dots {
+    border: 0;
+    padding: 0.25rem 0.5rem;
+    color: $text-light;
+    font-size: 1.1rem;
+
+    &:hover,
+    &:focus {
+        color: $text-dark;
+    }
+}
+
+// ---------- row 3: orders overview timeline ----------
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+
+    li {
+        position: relative;
+        padding-left: 2.25rem;
+        padding-bottom: 1.25rem;
+
+        // grey vertical line connecting the icons
+        &::before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 22px;
+            bottom: 0;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+
+        &:last-child::before {
+            display: none;
+        }
+    }
+
+    .timeline-icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.1rem;
+    }
+
+    // inline svg html5 logo, sized to match the other icons
+    .html5-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .timeline-title {
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 0.15rem;
+    }
+
+    .timeline-date {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: $text-light;
+        margin: 0;
+    }
+}
+
+// ---------- footer ----------
+.dashboard-footer {
+    font-size: 0.75rem;
+    color: $text-grey;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+
+// ==========================================================
+// TABLET AND UP (768px)
+// ==========================================================
+@include min-width($bp-md) {
+
+    // more breathing room around the content
+    .main-content {
+        padding: 1.5rem;
+    }
+
+    // search box doesn't need to stretch as wide
+    .dashboard-header .search-form {
+        flex-grow: 0;
+        width: 200px;
+    }
+
+    // projects go back to a normal table layout with column headings
+    .projects-table {
+        thead {
+            position: static;
+            width: auto;
+            height: auto;
+            overflow: visible;
+            clip: auto;
+            display: table-header-group;
+        }
+
+        tr {
+            display: table-row;
+            padding: 0;
+        }
+
+        td {
+            display: table-cell;
+            padding: 0.6rem 0.5rem;
+            border-bottom: 1px solid #e2e8f0;
+
+            &::before {
+                display: none;
+            }
+
+            &:first-child {
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+
+// ==========================================================
+// DESKTOP AND UP (992px): sidebar is always visible
+// ==========================================================
+@include min-width($bp-lg) {
+
+    // sidebar stays on screen and sticks while the content scrolls
+    .sidebar-column {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .sidebar {
+        padding: 0 0.5rem;
+
+        // bootstrap hides offcanvas headers on large screens, but the logo should stay
+        .offcanvas-header {
+            display: flex;
+        }
+    }
+
+    .main-content {
+        padding: 1.5rem 2rem;
+    }
+
+    .dashboard-footer {
+        text-align: left;
+    }
+}
+
+
+// ==========================================================
+// EXTRA LARGE AND UP (1200px)
+// ==========================================================
+@include min-width($bp-xl) {
+
+    // taller charts when they sit side by side at 50% each
+    .chart-wrap {
+        height: 300px;
+    }
+}
