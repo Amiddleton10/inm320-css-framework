@@ -8,9 +8,9 @@
 
 
 // ---------- shared chart settings ----------
-const teal = '#4fd1c5';
-const navy = '#2d3748';
-const axisGrey = '#a0aec0';   // light grey axis labels
+const blood = '#c0392b';
+const bone = '#ece3d9';
+const axisGrey = '#968b88';   // muted axis labels
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 
@@ -18,11 +18,11 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 const salesCanvas = document.querySelector('#sales-chart');
 
 if (salesCanvas && typeof Chart !== 'undefined') {
-    // teal gradient that fades out towards the bottom of the chart
+    // red gradient that fades out towards the bottom of the chart
     const salesContext = salesCanvas.getContext('2d');
-    const tealFill = salesContext.createLinearGradient(0, 0, 0, 300);
-    tealFill.addColorStop(0, 'rgba(79, 209, 197, 0.55)');
-    tealFill.addColorStop(1, 'rgba(79, 209, 197, 0)');
+    const bloodFill = salesContext.createLinearGradient(0, 0, 0, 300);
+    bloodFill.addColorStop(0, 'rgba(192, 57, 43, 0.55)');
+    bloodFill.addColorStop(1, 'rgba(192, 57, 43, 0)');
 
     new Chart(salesCanvas, {
         type: 'line',
@@ -32,8 +32,8 @@ if (salesCanvas && typeof Chart !== 'undefined') {
                 {
                     label: 'Mobile apps',
                     data: [180, 230, 210, 350, 360, 470, 400, 300, 360, 220, 400, 430],
-                    borderColor: teal,
-                    backgroundColor: tealFill,
+                    borderColor: blood,
+                    backgroundColor: bloodFill,
                     fill: true,
                     tension: 0.4,
                     pointRadius: 0
@@ -41,8 +41,8 @@ if (salesCanvas && typeof Chart !== 'undefined') {
                 {
                     label: 'Websites',
                     data: [500, 170, 180, 270, 210, 250, 230, 160, 110, 150, 160, 130],
-                    borderColor: navy,
-                    backgroundColor: 'rgba(45, 55, 72, 0.12)',
+                    borderColor: bone,
+                    backgroundColor: 'rgba(236, 227, 217, 0.06)',
                     fill: true,
                     tension: 0.4,
                     pointRadius: 0
@@ -65,7 +65,7 @@ if (salesCanvas && typeof Chart !== 'undefined') {
                     beginAtZero: true,
                     max: 500,
                     ticks: { color: axisGrey, stepSize: 100, font: { size: 10 } },
-                    grid: { color: '#e2e8f0' },
+                    grid: { color: '#2e252a' },
                     border: { display: false, dash: [5, 5] }   // dashed grid lines
                 }
             }
@@ -86,7 +86,7 @@ if (usersCanvas && typeof Chart !== 'undefined') {
                 {
                     label: 'Active users',
                     data: [330, 240, 110, 290, 490, 400, 480, 290, 170],
-                    backgroundColor: '#ffffff',
+                    backgroundColor: bone,
                     borderRadius: 4,
                     barThickness: 7
                 }
@@ -103,7 +103,7 @@ if (usersCanvas && typeof Chart !== 'undefined') {
                 y: {
                     beginAtZero: true,
                     max: 500,
-                    ticks: { color: '#ffffff', stepSize: 100, font: { size: 10, weight: 'bold' } },
+                    ticks: { color: bone, stepSize: 100, font: { size: 10, weight: 'bold' } },
                     grid: { display: false },
                     border: { display: false }
                 }

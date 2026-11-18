@@ -7,24 +7,27 @@
 // ==========================================================
 
 
-// ---------- VARIABLES (colours and sizes from the figma design) ----------
-$teal: #4fd1c5;
-$teal-dark: #2c7a73;       // darker teal, readable as text on white
-$teal-darker: #22625c;     // button hover
-$text-dark: #2d3748;
-$text-grey: #718096;
-$text-light: #a0aec0;
-$page-bg: #f8f9fa;
-$card-bg: #ffffff;
-$green: #38a169;
-$red: #e53e3e;
+// ---------- VARIABLES (gothic blood red theme, layout from the figma design) ----------
+$blood: #8e1b1b;           // main accent: icon boxes, buttons
+$blood-dark: #6d1212;      // button hover
+$blood-bright: #c0392b;    // progress bars
+$accent-text: #e5534b;     // red that is readable as text on the dark cards
+$text-on-accent: #f5ede4;  // bone white text on red
+$text-main: #ece3d9;       // bone white
+$text-muted: #b3a7a3;
+$text-faint: #968b88;
+$page-bg: #0e0b0d;         // near black
+$card-bg: #1b1518;         // charcoal
+$border: #2e252a;
+$green: #5cc98a;
+$red: #ff7a7a;
 $purple: #9f7aea;
-$dark-start: #313860;      // active users chart gradient
-$dark-end: #151928;
+$dark-start: #4a0e16;      // active users chart gradient
+$dark-end: #14060a;
 
 $font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $radius: 15px;
-$shadow: 0 3.5px 5.5px rgba(0, 0, 0, 0.02);
+$shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 
 // bootstrap's breakpoints, written out so my media queries match bootstrap's
 $bp-md: 768px;
@@ -50,8 +53,8 @@ $bp-xl: 1200px;
     width: $size;
     height: $size;
     border-radius: 12px;
-    background-color: $teal;
-    color: #ffffff;
+    background-color: $blood;
+    color: $text-on-accent;
     font-size: $font-size;
 }
 
@@ -72,11 +75,11 @@ $bp-xl: 1200px;
 body {
     font-family: $font-main;
     background-color: $page-bg;
-    color: $text-dark;
+    color: $text-main;
 }
 
 a {
-    color: $teal-dark;
+    color: $accent-text;
 }
 
 // ---------- sidebar ----------
@@ -89,7 +92,7 @@ a {
         padding: 1.5rem 0.5rem;
         border-bottom: 1px solid transparent;
         // faded divider line under the logo
-        border-image: linear-gradient(90deg, rgba(224, 225, 226, 0), #e0e1e2, rgba(224, 225, 226, 0)) 1;
+        border-image: linear-gradient(90deg, rgba(46, 37, 42, 0), $border, rgba(46, 37, 42, 0)) 1;
     }
 
     .sidebar-brand {
@@ -110,7 +113,7 @@ a {
         font-size: 0.75rem;
         font-weight: 700;
         text-transform: uppercase;
-        color: $text-dark;
+        color: $text-main;
         margin: 1.5rem 0 0.75rem 1rem;
     }
 
@@ -124,26 +127,26 @@ a {
         border-radius: $radius;
         font-size: 0.85rem;
         font-weight: 700;
-        color: $text-grey;
+        color: $text-muted;
 
         .nav-icon {
             @include icon-box(30px, 0.85rem);
-            background-color: #ffffff;
-            color: $teal;
+            background-color: $page-bg;
+            color: $accent-text;
         }
 
         &:hover {
-            color: $text-dark;
+            color: $text-main;
         }
 
-        // the active page link gets a white card and a teal icon box
+        // the active page link gets a card background and a red icon box
         &.active {
             @include card-style;
-            color: $text-dark;
+            color: $text-main;
 
             .nav-icon {
-                background-color: $teal;
-                color: #ffffff;
+                background-color: $blood;
+                color: $text-on-accent;
             }
         }
     }
@@ -162,7 +165,7 @@ a {
         font-size: 0.75rem;
 
         a {
-            color: $text-light;
+            color: $text-faint;
             text-decoration: none;
         }
     }
@@ -187,26 +190,26 @@ a {
             top: 50%;
             transform: translateY(-50%);
             font-size: 0.8rem;
-            color: $text-dark;
+            color: $text-main;
         }
 
         .form-control {
             padding-left: 2.25rem;
-            border: 1px solid #e2e8f0;
+            border: 1px solid $border;
             border-radius: $radius;
-            background-color: #ffffff;
+            background-color: $card-bg;
             font-size: 0.8rem;
         }
     }
 
     .header-link {
-        color: $text-grey;
+        color: $text-muted;
         font-size: 0.8rem;
         font-weight: 700;
         text-decoration: none;
 
         &:hover {
-            color: $text-dark;
+            color: $text-main;
         }
     }
 }
@@ -218,8 +221,8 @@ a {
 
     &:hover,
     &:focus {
-        background-color: $teal-dark;
-        color: #ffffff;
+        background-color: $blood;
+        color: $text-on-accent;
     }
 }
 
@@ -236,7 +239,7 @@ a {
 
 .card-subtitle-sm {
     font-size: 0.85rem;
-    color: $text-grey;
+    color: $text-muted;
 }
 
 // green "up" and red "down" percentages
@@ -250,8 +253,8 @@ a {
     font-weight: 700;
 }
 
-.text-teal {
-    color: $teal-dark;
+.text-accent {
+    color: $accent-text;
 }
 
 .text-purple {
@@ -268,7 +271,7 @@ a {
     .stat-label {
         font-size: 0.75rem;
         font-weight: 700;
-        color: $text-grey;
+        color: $text-muted;
         margin-bottom: 0.25rem;
     }
 
@@ -316,7 +319,7 @@ a {
     align-items: center;
     font-size: 0.75rem;
     font-weight: 700;
-    color: $text-grey;
+    color: $text-muted;
     margin-bottom: 0.5rem;
 }
 
@@ -326,13 +329,13 @@ a {
     margin-bottom: 0.5rem;
 }
 
-// thin teal progress bars (active users and projects table)
+// thin red progress bars (active users and projects table)
 .progress-thin {
     height: 4px;
-    background-color: #e2e8f0;
+    background-color: $border;
 
     .progress-bar {
-        background-color: $teal;
+        background-color: $blood-bright;
     }
 }
 
@@ -347,6 +350,10 @@ a {
 // phones: each row stacks, with labels from data-label
 .projects-table {
     font-size: 0.85rem;
+    // use the card colour instead of bootstrap's dark table colour
+    --bs-table-bg: transparent;
+    --bs-table-color: #{$text-main};
+    --bs-border-color: #{$border};
 
     thead {
         position: absolute;
@@ -361,13 +368,13 @@ a {
         font-size: 0.7rem;
         font-weight: 700;
         text-transform: uppercase;
-        color: $text-light;
+        color: $text-faint;
     }
 
     tr {
         display: block;
         padding: 0.75rem 0;
-        border-bottom: 1px solid #e2e8f0;
+        border-bottom: 1px solid $border;
     }
 
     td {
@@ -384,7 +391,7 @@ a {
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            color: $text-light;
+            color: $text-faint;
         }
 
         // the company name cell is the row's title, so it has no label
@@ -406,7 +413,7 @@ a {
     .completion {
         display: block;
         font-weight: 700;
-        color: $teal-dark;
+        color: $accent-text;
         margin-bottom: 0.25rem;
     }
 }
@@ -459,7 +466,7 @@ a {
     .avatar {
         width: 24px;
         height: 24px;
-        border: 2px solid #ffffff;
+        border: 2px solid $card-bg;
         border-radius: 50%;
         margin-left: -8px;
 
@@ -474,19 +481,39 @@ a {
 .avatar-3 { background-color: #9f7aea; }
 .avatar-4 { background-color: #48bb78; }
 
-// teal button (modal button and modal save button)
-.btn-teal {
-    background-color: $teal-dark;
-    border-color: $teal-dark;
-    color: #ffffff;
+// red button (modal button and modal save button)
+.btn-accent {
+    background-color: $blood;
+    border-color: $blood;
+    color: $text-on-accent;
     font-size: 0.8rem;
     font-weight: 700;
 
     &:hover,
     &:focus {
-        background-color: $teal-darker;
-        border-color: $teal-darker;
-        color: #ffffff;
+        background-color: $blood-dark;
+        border-color: $blood-dark;
+        color: $text-on-accent;
+    }
+}
+
+// red focus glow and slider in the add project modal (bootstrap's default is blue)
+.form-control:focus {
+    border-color: $accent-text;
+    box-shadow: 0 0 0 0.25rem rgba(192, 57, 43, 0.25);
+}
+
+.form-range {
+    &::-webkit-slider-thumb {
+        background-color: $blood-bright;
+    }
+
+    &::-moz-range-thumb {
+        background-color: $blood-bright;
+    }
+
+    &:focus::-webkit-slider-thumb {
+        box-shadow: 0 0 0 0.25rem rgba(192, 57, 43, 0.25);
     }
 }
 
@@ -494,12 +521,12 @@ a {
 .btn-dots {
     border: 0;
     padding: 0.25rem 0.5rem;
-    color: $text-light;
+    color: $text-faint;
     font-size: 1.1rem;
 
     &:hover,
     &:focus {
-        color: $text-dark;
+        color: $text-main;
     }
 }
 
@@ -522,7 +549,7 @@ a {
             top: 22px;
             bottom: 0;
             width: 2px;
-            background-color: #e2e8f0;
+            background-color: $border;
         }
 
         &:last-child::before {
@@ -552,7 +579,7 @@ a {
     .timeline-date {
         font-size: 0.7rem;
         font-weight: 700;
-        color: $text-light;
+        color: $text-faint;
         margin: 0;
     }
 }
@@ -560,7 +587,7 @@ a {
 // ---------- footer ----------
 .dashboard-footer {
     font-size: 0.75rem;
-    color: $text-grey;
+    color: $text-muted;
     text-align: center;
     padding: 1rem 0;
 }
@@ -601,7 +628,7 @@ a {
         td {
             display: table-cell;
             padding: 0.6rem 0.5rem;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid $border;
 
             &::before {
                 display: none;
